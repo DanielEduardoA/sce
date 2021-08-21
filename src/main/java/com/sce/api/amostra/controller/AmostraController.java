@@ -12,8 +12,11 @@ import com.sce.api.amostra.model.AmostraResponse;
 import com.sce.api.amostra.model.AmostraVo;
 import com.sce.api.amostra.service.AmostraService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/v1/sce")
+@Slf4j
 public class AmostraController {
 
     @Autowired
@@ -21,6 +24,7 @@ public class AmostraController {
 
     @PostMapping("/amostra")
     public ResponseEntity<AmostraResponse> postAmostra(@RequestBody AmostraVo vo) throws AmostraApiException {
+        log.info("Criando amostra");
         AmostraResponse response = amostraService.save(vo);
         return ResponseEntity.ok(response);
     }
